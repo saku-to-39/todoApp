@@ -24,5 +24,7 @@
       <h4><?php echo $post["id"];?></h4>
       <h4><?php echo $post["title"];?></h4>
     <?php endforeach?>
+    <hr>
+    <a href="create.php">投稿画面に遷移</a>
 </body>
 </html>
