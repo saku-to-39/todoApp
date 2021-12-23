@@ -1,13 +1,16 @@
 <?php
-//PDOインスタンスの作成
- $pdo = new PDO("sqlite:./db/todoapp.sqlite3",null,null);
-//SQLクエリの作成
- $sql = "select id, title from posts order by id";
- //クエリメソッドでPDOステートメントインスタンスを作る
- $st = $pdo->query($sql);
-//メソッドでpostsテーブルを二次元配列でとってくる.
- $posts = $st->fetchAll();
+///pdoを作る
+///postsテーブルから、レコードを持ってくる
+///fetchでレコードを1件ずつ処理して、持ってくる
+$dsn = "sqlite:./db/todoapp.sqlite3";
+$pdo = new PDO($dsn,null,null);
 
+$sql = "select id,title from posts order by id";
+$st = $pdo->query($sql);
+
+$posts = $st->fetchAll();
+
+ 
 
 ?>
 
@@ -17,14 +20,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>todoApp</title>
+    <title>Document</title>
 </head>
 <body>
     <?php foreach($posts as $post):?>
-      <h4><?php echo $post["id"];?></h4>
-      <h4><?php echo $post["title"];?></h4>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>title</th>
+        </tr>
+          <td><?php echo $post["id"]?></td>
+          <td><?php echo $post["title"]?></td>
+      </table>
     <?php endforeach?>
-    <hr>
-    <a href="create.php">投稿画面に遷移</a>
+    <a href="create.php">投稿画面</a>
 </body>
 </html>
