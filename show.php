@@ -28,5 +28,7 @@ $post = $ps->fetch();
 <body>
     <?php echo $post['id']?>
     <?php echo $post['title']?>
+    <a href="edit.php?id=<?php echo $post["id"]?>">編集画面</a>
+    <a href="destroy.php?id=<?php echo $post["id"]?>">削除する</a>
 </body>
 </html>
