@@ -23,16 +23,21 @@ $posts = $st->fetchAll();
     <title>Document</title>
 </head>
 <body>
-    <?php foreach($posts as $post):?>
       <table>
         <tr>
           <th>ID</th>
           <th>title</th>
+          <th>show</th>
         </tr>
+        <?php foreach($posts as $post):?>
+        <tr>
           <td><?php echo $post["id"]?></td>
           <td><?php echo $post["title"]?></td>
+          <td><a href="show.php?id=<?php echo $post["id"]?>">詳細</a></td>
+        </tr>
+        <?php endforeach?>
       </table>
-    <?php endforeach?>
+
     <a href="create.php">投稿画面</a>
 </body>
 </html>
